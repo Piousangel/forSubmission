@@ -19,16 +19,17 @@ export class BossRaidEntity extends BaseEntity{
     @ManyToOne( () => User, (user)=> user.raidRecords , {lazy : true})
     user : Promise<User>;
 
-    //점수
+    //점수 -> 이것도 유저에서 가져오는 방식으로 하면 좋겠다..
     @Column()
     score : number;
 
+    // 레벨 필요 없을 것 같긴합니다.
     @Column()
     level : number;
 
     //레이드 참여 여부
     @Column({ type: 'enum', enum : RecordType})
-    canEntered: RecordType;
+    isEntered: RecordType;
 
     //레이드 시작 시간
     @CreateDateColumn({ type: 'timestamp' })
@@ -40,7 +41,7 @@ export class BossRaidEntity extends BaseEntity{
 
     isBossRaidFinshed() {
         return(
-            this.canEntered === RecordType.POSSIBLE|| this.canEntered === RecordType.IMPOSSIBLE
+            this.isEntered === RecordType.POSSIBLE|| this.isEntered === RecordType.IMPOSSIBLE
         );
     }
 
@@ -49,7 +50,7 @@ export class BossRaidEntity extends BaseEntity{
     }
 
     isFinshed(now: Moment) {
-        this.canEntered = RecordType.FINSHED;
+        this.isEntered = RecordType.FINSHED;
         this.endTime = now.toDate();
     }
 

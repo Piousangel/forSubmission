@@ -17,7 +17,7 @@ export class UserRankingService {
     }
 
     //내림차순으로 랭킹조회
-    // public async serachRainking() {
-    //     const result = await.this.cacheManager.get
-    // }
+    public async searchRanking(userid : number) {
+        const result = await this.cacheManager.get('userid')
+    }
 }

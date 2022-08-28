@@ -4,8 +4,8 @@ import { Repository } from 'typeorm';
 import { BossRaidEntity, RecordType } from './boss-raid.entity';
 import { HttpService } from '@nestjs/axios'; 
 import { Cache } from 'cache-manager'; 
-import { UserRankingService } from 'src/user-ranking/user-ranking.service';
-import { UsersService } from 'src/users/users.service';
+import { UserRankingService } from '../user-ranking/user-ranking.service';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class BossRaidService {
@@ -62,7 +62,7 @@ export class BossRaidService {
         const raidPossible = await this.bossRaidRepository.findOne({
 
             where:{
-                canEntered : RecordType.IMPOSSIBLE
+                isEntered : RecordType.IMPOSSIBLE
             }
         })
 
@@ -70,7 +70,7 @@ export class BossRaidService {
         if (raidPossible) {
             return raidPossible.user
         }
-        else{ // 가능하면 보스레이드 시작
+        else{ // 가능하면 보스레이드 시작( 중복되지 않는 raidRecordID를 true 와 함께 응답?!)
             
             //여기서 점수를 올려버리자
             const score = await this.cacheManager.get(level.toString());
@@ -81,7 +81,7 @@ export class BossRaidService {
                 // user : nowUser,
                 level : level,
                 score : Number(score),
-                canEntered : RecordType.IMPOSSIBLE,
+                isEntered : RecordType.IMPOSSIBLE,
             })
         }
     }
@@ -113,9 +113,9 @@ export class BossRaidService {
         this.userRankingService.updateRanking(userId, score);
     }
 
-    // async searchBossRaidRanking(userId : number) {
-
-    // }
+    async searchBossRaidRanking(userId : number) {
+        return this.userRankingService.searchRanking(userId);
+    }
 
 
 }

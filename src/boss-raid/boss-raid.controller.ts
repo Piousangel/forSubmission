@@ -30,10 +30,11 @@ export class BossRaidController {
         return await this.bossraidService.endBossRaid(body.userId, body.raidRecordId);
     }
 
-    // @Get('/topRankerList')
-    // async searchBossRaidRanking( @Body() body): Promise<BossRaidEntity>{
+    // 보스레이드 랭킹 조회 응답으로 전체 순위 리스트, 내 순위를 줘야하는데;;
+    @Get('/topRankerList')
+    async searchBossRaidRanking( @Body() body) {
 
-    //     return await this.bossraidService.searchBossRaidRanking(body.userId);
-    // }
+        return await this.bossraidService.searchBossRaidRanking(body.userId);
+    }
 
 }
