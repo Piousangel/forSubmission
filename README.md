@@ -7,6 +7,9 @@
 <img width="1020" alt="스크린샷 2022-08-29 오전 6 05 45" src="https://user-images.githubusercontent.com/55525574/187094500-85db9b29-14dd-4d69-bd0b-a14f2b9ba6b3.png">
 <img width="1010" alt="스크린샷 2022-08-29 오전 6 06 35" src="https://user-images.githubusercontent.com/55525574/187094532-9505c7da-748f-475f-b5da-0e8cc9c644f2.png">
 <img width="1009" alt="스크린샷 2022-08-29 오전 6 45 48" src="https://user-images.githubusercontent.com/55525574/187095737-c9cef8ea-85a1-415b-ac50-cb301b4efad6.png">
+<img width="1005" alt="스크린샷 2022-08-29 오전 7 24 31" src="https://user-images.githubusercontent.com/55525574/187096950-c8a38e8c-9
+<img width="1092" alt="스크린샷 2022-08-29 오전 7 26 02" src="https://user-images.githubusercontent.com/55525574/187097002-66490351-a782-41d6-8eeb-990deb8fabc1.png">
+238-43cd-8506-a6de35f22826.png">
 
 -----
 ## Stay in touch
