@@ -12,6 +12,7 @@ import { DataSource } from 'typeorm';
   controllers: [UsersController],
   providers: [UsersService]
 })
+
 export class UsersModule {
   constructor(private dataSource : DataSource){}
 }
