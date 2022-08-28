@@ -17,7 +17,7 @@ export class BossRaidEntity extends BaseEntity{
 
     //유저 아이디와 조인시켜줄 것 
     @ManyToOne( () => User, (user)=> user.raidRecords , {lazy : true})
-    user : Promise<User>;
+    user : User;
 
     //점수 -> 이것도 유저에서 가져오는 방식으로 하면 좋겠다..
     @Column()

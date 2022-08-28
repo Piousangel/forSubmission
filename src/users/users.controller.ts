@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { userInfo } from 'os';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { User } from './users.entity';
 import { UsersService } from './users.service';
@@ -8,13 +9,14 @@ export class UsersController {
 
     constructor(private usersService: UsersService){}
 
-    //유저 생성
+    //유저 생성 -> 유저 아이디 반환
     @Post('/')
     @UsePipes(ValidationPipe)  //중복검사
-    async createUser( @Body() body ) : Promise<User> {
+    async createUser( @Body() body ) {
         // console.log("body", body)
-        return await this.usersService.createUser(body.userId);
-    }
+        const userId = await this.usersService.createUser(body.userId);
+        return {"userId" : userId}
+    }   
 
     // 아이디로 유저 조회
     @Get('/:id')

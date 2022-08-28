@@ -14,7 +14,7 @@ export class UsersService {
         private userRepository : Repository<User>,
     ){}
 
-    async createUser(userId : number) : Promise<User> {
+    async createUser(userId : number) {
         //console.log("userId in create!!", userId)
         const user = this.userRepository.create({
             userId : userId,
@@ -24,7 +24,7 @@ export class UsersService {
         //console.log("data is stored1111");
         await this.userRepository.save(user);
         //console.log("data is stored2222");
-        return user;
+        return user.userId;
         
     }
 

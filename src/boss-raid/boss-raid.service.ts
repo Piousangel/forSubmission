@@ -23,18 +23,17 @@ export class BossRaidService {
         private userRankingService: UserRankingService,
         private userService: UsersService,
     ){
-
-        this.refreshCachingData();
+        this.takeCacheData();  //즉시 호출하게 끔
     }
 
-    private async fetchCachingData() {
+    private async getData() {
         return this.httpService.axiosRef.get(
             'https://dmpilf5svl7rv.cloudfront.net/assignment/backend/bossRaidData.json',
         );
     }
 
-    public async refreshCachingData() {
-        const data = await this.fetchCachingData();
+    public async takeCacheData() {
+        const data = await this.getData();
         const staticData = data.data.bossRaids[0]; // S3 저장소에서 가져온 정적 데이터
         
         await this.cacheManager.set('bossRaidLimitSeconds',staticData.bossRaidLimitSeconds);
@@ -77,11 +76,12 @@ export class BossRaidService {
         if (getStatus == "POSSIBLE"){
             //여기서 점수를 올려버리자
             const score = await this.cacheManager.get(level.toString());
+            console.log("level@@@@@@", level.toString());
             console.log("score!!!!!!", score);
             const nowUser = await this.userService.getUserById(userId);
 
             const bossRaid = this.bossRaidRepository.create({
-                // user : nowUser,
+                user : nowUser,
                 level : level,
                 score : Number(score),
                 isEntered : RecordType.IMPOSSIBLE,
@@ -112,10 +112,10 @@ export class BossRaidService {
         if (!record) {
             throw new NotFoundException('해당하는 레이드 기록이 존재하지 않습니다');
         }
-
+        record.isEntered = RecordType.POSSIBLE
         await this.bossRaidRepository.save(record);
-        
-        await this.updateRanking(( await record.user).userId, record.score)
+        await this.updateRanking( (await record.user).userId, record.score)
+        return record.isEntered
     };
 
     //랭킹 업데이트

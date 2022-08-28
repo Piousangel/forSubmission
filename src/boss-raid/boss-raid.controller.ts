@@ -15,7 +15,7 @@ export class BossRaidController {
         
         const arr = await this.bossraidService.getBossRaidStatus();
 
-        return {"isEnterd" : arr[0], "raidRecordId" : arr[1]}
+        return {"isEntered" : arr[0], "raidRecordId" : arr[1]}
     }
 
     // 서비스단에서 조회 가능한지 따져서 가능하면 보스레이드 하기
@@ -29,7 +29,8 @@ export class BossRaidController {
     @Patch('/end')
     async endBossRaid( @Body() body) {
 
-        return await this.bossraidService.endBossRaid(body.userId, body.raidRecordId);
+        const result = await this.bossraidService.endBossRaid(body.userId, body.raidRecordId);
+        return {"isEntered" : result, "comment" : "레이드 종료, 랭킹 업데이트"}
     }
 
     // 보스레이드 랭킹 조회 응답으로 전체 순위 리스트, 내 순위를 줘야하는데;;
