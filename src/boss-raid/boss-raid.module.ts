@@ -6,4 +6,5 @@ import { BossRaidService } from './boss-raid.service';
   controllers: [BossRaidController],
   providers: [BossRaidService]
 })
+
 export class BossRaidModule {}
