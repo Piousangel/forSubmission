@@ -14,6 +14,7 @@ import { DataSource } from 'typeorm';
   controllers: [BossRaidController],
   providers: [BossRaidService]
 })
+
 export class BossRaidModule {
   constructor(private dataSource : DataSource){}
 }

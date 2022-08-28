@@ -1,7 +1,6 @@
 import { BossRaidEntity } from "../boss-raid/boss-raid.entity";
 import { BaseEntity, Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, OneToMany, PrimaryColumn } from "typeorm";
 
-
 @Entity()
 export class User extends BaseEntity{
 
