@@ -10,8 +10,8 @@ export class User extends BaseEntity{
     @Column()
     totalScore: number;
 
-    @Column()
-    isEntered: boolean;
+    // @Column()
+    // isEntered: boolean;
 
     //1:N 유저 하나당 여러개의 레이드 기록
     @OneToMany( () => BossRaidEntity, (raidRecord)=> raidRecord.user)

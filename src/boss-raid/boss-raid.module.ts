@@ -8,6 +8,7 @@ import { HttpModule } from '@nestjs/axios';
 import { DataSource } from 'typeorm';
 import { UsersService } from '../users/users.service';
 import { UserRankingService } from '../user-ranking/user-ranking.service';
+import { User } from '../users/users.entity';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UserRankingService } from '../user-ranking/user-ranking.service';
       port: 6379,		// Redis의 기본포트번호
    }),
     TypeOrmModule.forFeature([BossRaidEntity]),
+    TypeOrmModule.forFeature([User]),
     HttpModule],
   controllers: [BossRaidController],
   providers: [BossRaidService, UsersService, UserRankingService]

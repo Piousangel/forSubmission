@@ -54,11 +54,6 @@ export class BossRaidService {
 
     async getBossRaidStatus() {
 
-    }
-
-    //보스레이드가 시작가능하다면 시작하기
-    async startBossRaid(userId: number, level : number) {
-
         const raidPossible = await this.bossRaidRepository.findOne({
 
             where:{
@@ -66,15 +61,27 @@ export class BossRaidService {
             }
         })
 
-        // IMPOSSIBLE이 있다면 지금 보스레이드 중
+        // IMPOSSIBLE이 있다면 지금 보스레이드 중입니다.
         if (raidPossible) {
-            return raidPossible.user
+            return [RecordType.IMPOSSIBLE, raidPossible.user]
         }
-        else{ // 가능하면 보스레이드 시작( 중복되지 않는 raidRecordID를 true 와 함께 응답?!)
-            
+        else{
+            return RecordType.POSSIBLE
+        }
+
+    }
+
+    //보스레이드가 시작가능하다면 시작하기
+    async startBossRaid(userId: number, level : number) {
+
+        
+        // 가능하면 보스레이드 시작( 중복되지 않는 raidRecordID를 true 와 함께 응답?!)
+        const getStatus = await this.getBossRaidStatus();
+
+        if (getStatus === "POSSIBLE"){
             //여기서 점수를 올려버리자
             const score = await this.cacheManager.get(level.toString());
-            
+        
             const nowUser = await this.userService.getUserById(userId);
 
             const bossRaid = this.bossRaidRepository.create({
@@ -83,7 +90,13 @@ export class BossRaidService {
                 score : Number(score),
                 isEntered : RecordType.IMPOSSIBLE,
             })
+
+            return bossRaid;
         }
+        else{
+            return getStatus;
+        }
+            
     }
 
     // 보스레이드가 종료되는 시점에 랭킹 업데이트

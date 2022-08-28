@@ -15,22 +15,22 @@ export class UsersService {
     ){}
 
     async createUser(userId : number) : Promise<User> {
-        console.log("userId in create!!", userId)
+        //console.log("userId in create!!", userId)
         const user = this.userRepository.create({
             userId : userId,
             totalScore: 0,
-            isEntered : false
+            //isEntered : false
         })
-        console.log("data is stored1111");
+        //console.log("data is stored1111");
         await this.userRepository.save(user);
-        console.log("data is stored2222");
+        //console.log("data is stored2222");
         return user;
         
     }
 
     async getUserById(userId : number) : Promise <User> {
-        console.log("hjihi")
-        console.log("userid123123",userId)
+        //console.log("hjihi")
+        //log("userid123123",userId)
         const serach = await this.userRepository.findOne({
             where: {userId : userId},
         });
