@@ -4,8 +4,8 @@ import { Repository } from 'typeorm';
 import { BossRaidEntity, RecordType } from './boss-raid.entity';
 import { HttpService } from '@nestjs/axios'; 
 import { Cache } from 'cache-manager'; 
-import { UserRankingService } from '../user-ranking/user-ranking.service';
-import { UsersService } from '../users/users.service';
+import { UserRankingService } from 'src/user-ranking/user-ranking.service';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class BossRaidService {
