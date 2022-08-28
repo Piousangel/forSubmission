@@ -13,7 +13,9 @@ export class BossRaidController {
     @Get('/')
     async getBossRaidStatus() {
         
-        return await this.bossraidService.getBossRaidStatus();
+        const arr = await this.bossraidService.getBossRaidStatus();
+
+        return {"isEnterd" : arr[0], "raidRecordId" : arr[1]}
     }
 
     // 서비스단에서 조회 가능한지 따져서 가능하면 보스레이드 하기

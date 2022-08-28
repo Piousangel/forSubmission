@@ -6,6 +6,7 @@ import { HttpService } from '@nestjs/axios';
 import { Cache } from 'cache-manager'; 
 import { UserRankingService } from '../user-ranking/user-ranking.service';
 import { UsersService } from '../users/users.service';
+// import { v4 as uuidv } from 'uuid';
 
 @Injectable()
 export class BossRaidService {
@@ -36,20 +37,14 @@ export class BossRaidService {
         const data = await this.fetchCachingData();
         const staticData = data.data.bossRaids[0]; // S3 저장소에서 가져온 정적 데이터
         
-        await this.cacheManager.set(
-          'bossRaidLimitSeconds',
-          staticData.bossRaidLimitSeconds,
-        );
+        await this.cacheManager.set('bossRaidLimitSeconds',staticData.bossRaidLimitSeconds);
     
         await this.cacheManager.set('1', staticData.levels[0].score);  
         await this.cacheManager.set('2', staticData.levels[1].score);
         await this.cacheManager.set('3', staticData.levels[2].score);
-    
- 
-        console.log(await this.cacheManager.get('bossRaidLimitSeconds')); //180
-        console.log(await this.cacheManager.get('1'));  //20
-        console.log(await this.cacheManager.get('2'));  //47
-        console.log(await this.cacheManager.get('3'));  //85
+
+        //console.log("123123", await this.cacheManager.get('bossRaidLimitSeconds')); //180
+
     }
 
     async getBossRaidStatus() {
@@ -62,8 +57,9 @@ export class BossRaidService {
         })
 
         // IMPOSSIBLE이 있다면 지금 보스레이드 중입니다.
+        //console.log("raidPossible.user!!!!!", raidPossible.index)
         if (raidPossible) {
-            return [RecordType.IMPOSSIBLE, raidPossible.user]
+            return [RecordType.IMPOSSIBLE, raidPossible.index]
         }
         else{
             return RecordType.POSSIBLE
@@ -78,10 +74,10 @@ export class BossRaidService {
         // 가능하면 보스레이드 시작( 중복되지 않는 raidRecordID를 true 와 함께 응답?!)
         const getStatus = await this.getBossRaidStatus();
 
-        if (getStatus === "POSSIBLE"){
+        if (getStatus == "POSSIBLE"){
             //여기서 점수를 올려버리자
             const score = await this.cacheManager.get(level.toString());
-        
+            console.log("score!!!!!!", score);
             const nowUser = await this.userService.getUserById(userId);
 
             const bossRaid = this.bossRaidRepository.create({
@@ -91,6 +87,7 @@ export class BossRaidService {
                 isEntered : RecordType.IMPOSSIBLE,
             })
 
+            await this.bossRaidRepository.save(bossRaid);
             return bossRaid;
         }
         else{
@@ -126,6 +123,7 @@ export class BossRaidService {
         this.userRankingService.updateRanking(userId, score);
     }
 
+    //랭킹 조회
     async searchBossRaidRanking(userId : number) {
         return this.userRankingService.searchRanking(userId);
     }

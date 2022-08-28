@@ -36,7 +36,7 @@ export class BossRaidEntity extends BaseEntity{
     Raid_startTime: Date;
 
     //끝나는 시간
-    @Column({ type: 'timestamp'})
+    @Column({ type: 'timestamp', nullable: true})
     endTime: Date;
 
     isBossRaidFinshed() {
