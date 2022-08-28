@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { DataSource } from 'typeorm';
 import { User } from './users/users.entity';
 import { BossRaidModule } from './boss-raid/boss-raid.module';
+import { BossRaidEntity } from './boss-raid/boss-raid.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot(
@@ -15,7 +16,7 @@ import { BossRaidModule } from './boss-raid/boss-raid.module';
       password: 'test_password',
       database: 'testdb',
       synchronize: true, // local only
-      entities: [User],
+      entities: [User, BossRaidEntity],
       })
       ,UsersModule, BossRaidModule],
 

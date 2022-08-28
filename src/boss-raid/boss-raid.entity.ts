@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { User } from "src/users/users.entity";
+import { User } from "../users/users.entity"; 
 
 @Entity()
 export class BossRaidEntity extends BaseEntity{
@@ -8,7 +8,7 @@ export class BossRaidEntity extends BaseEntity{
     index : number;
 
     //유저 아이디와 조인시켜줄 것 
-    @ManyToOne(() => User, (user)=> user.raidRecords , {lazy : true})
+    @ManyToOne( () => User, (user)=> user.raidRecords , {lazy : true})
     user : Promise<User>;
 
     //레이드 참여 여부
