@@ -1,4 +1,5 @@
 레디스 랭킹 및 총 점수는 구현해볼 계획입니다...!
+https://medium.com/zigbang/nestjs의-module과-cachemodule을-활용한-redis-연동-2166a771196
 -----
 -----
 -----
