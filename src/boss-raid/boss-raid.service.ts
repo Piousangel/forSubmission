@@ -40,9 +40,15 @@ export class BossRaidService {
         
         await this.cacheManager.set('bossRaidLimitSeconds',staticData.bossRaidLimitSeconds);
     
-        await this.cacheManager.set('1', staticData.levels[0].score);  
-        await this.cacheManager.set('2', staticData.levels[1].score);
-        await this.cacheManager.set('3', staticData.levels[2].score);
+        await this.cacheManager.set('1', staticData.levels[0].score, {
+            ttl:1200   // 20분뒤 사라짐!
+        });  
+        await this.cacheManager.set('2', staticData.levels[1].score, {
+            ttl:1200   
+        });
+        await this.cacheManager.set('3', staticData.levels[2].score, {
+            ttl:1200  
+        });
 
         //console.log("123123", await this.cacheManager.get('bossRaidLimitSeconds')); //180
         // console.log(await this.cacheManager.get('1'));
@@ -148,9 +154,10 @@ export class BossRaidService {
         this.userRankingService.updateRanking(userId, score);
     }
 
-    //랭킹 조회
+    //랭킹 조회 => 자신의 등수도 조회가 안되지...
     async searchBossRaidRanking(userId : number) {
-        return this.userRankingService.searchRanking(userId);
+        const ranking = this.userRankingService.searchRanking(userId);
+        return {'myRanking' : ranking} 
     }
 
 

@@ -9,15 +9,18 @@ export class UserRankingService {
         @Inject(CACHE_MANAGER) private cacheManager: Cache,
     ){}
 
-    public async updateRanking(key: number, value: number) {
-        const result = await this.cacheManager.set('key', 'value',
+    public async updateRanking(userId: number, score: number) {
+        const result = await this.cacheManager.set(userId.toString(), score,
         {
             ttl:1200   // 20분뒤 사라짐!
         });
+        console.log("updateRanking");
     }
 
     //내림차순으로 랭킹조회
     public async searchRanking(userid : number) {
-        const result = await this.cacheManager.get('userid')
+        console.log("00000")
+        const result = await this.cacheManager.get(userid.toString())
+        console.log("11111")
     }
 }

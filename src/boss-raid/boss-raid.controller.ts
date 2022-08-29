@@ -33,8 +33,8 @@ export class BossRaidController {
         return {"isEntered" : result, "comment" : "레이드 종료, 랭킹 업데이트"}
     }
 
-    // 보스레이드 랭킹 조회 응답으로 전체 순위 리스트, 내 순위를 줘야하는데;;
-    @Get('/topRankerList')
+    // 보스레이드 랭킹 조회 응답으로 전체 순위 리스트, id -> ranking
+    @Post('/topRankerList')
     async searchBossRaidRanking( @Body() body) {
 
         return await this.bossraidService.searchBossRaidRanking(body.userId);
