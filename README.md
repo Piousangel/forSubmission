@@ -1,23 +1,41 @@
+
+-----
+-----
+-----
+-----
+-----
+-----
 ### 유저생성
-<img width="1060" alt="스크린샷 2022-08-29 오전 5 34 21" src="https://user-images.githubusercontent.com/55525574/187093403-5916ec76-8126-4461-af6b-6cce3a8ccdfd.png">
+
+<img width="1092" alt="스크린샷 2022-08-29 오후 12 26 30" src="https://user-images.githubusercontent.com/55525574/187117154-2cda971d-b562-47e1-9a78-c4da78e936f3.png">
+
 -----
+
 ### 유저조회
-<img width="1004" alt="스크린샷 2022-08-29 오전 5 35 21" src="https://user-images.githubusercontent.com/55525574/187093450-f8a58d2a-f3fd-402c-a8a3-a88128536116.png">
------
-<img width="1020" alt="스크린샷 2022-08-29 오전 6 05 45" src="https://user-images.githubusercontent.com/55525574/187094500-85db9b29-14dd-4d69-bd0b-a14f2b9ba6b3.png">
-<img width="1010" alt="스크린샷 2022-08-29 오전 6 06 35" src="https://user-images.githubusercontent.com/55525574/187094532-9505c7da-748f-475f-b5da-0e8cc9c644f2.png">
-<img width="1009" alt="스크린샷 2022-08-29 오전 6 45 48" src="https://user-images.githubusercontent.com/55525574/187095737-c9cef8ea-85a1-415b-ac50-cb301b4efad6.png">
-<img width="1005" alt="스크린샷 2022-08-29 오전 7 24 31" src="https://user-images.githubusercontent.com/55525574/187096950-c8a38e8c-9238-43cd-8506-a6de35f22826.png">
-<img width="1092" alt="스크린샷 2022-08-29 오전 7 26 02" src="https://user-images.githubusercontent.com/55525574/187097002-66490351-a782-41d6-8eeb-990deb8fabc1.png">
-
+<img width="1097" alt="스크린샷 2022-08-29 오후 12 27 19" src="https://user-images.githubusercontent.com/55525574/187117228-01405f06-ff6d-4427-aac0-c62ab2de60ab.png">
 
 -----
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### 보스레이드가능한지 조회
+<img width="1134" alt="스크린샷 2022-08-29 오후 12 28 08" src="https://user-images.githubusercontent.com/55525574/187117292-28ed3b3f-dc93-43a7-8f86-55c754f4011a.png">
 
-## License
+-----
 
-Nest is [MIT licensed](LICENSE).
+### 보스레이드 시작
+<img width="1097" alt="스크린샷 2022-08-29 오후 12 31 39" src="https://user-images.githubusercontent.com/55525574/187117606-9f3a3843-3d4f-46ce-ab9e-8d927ec99da4.png">
+
+-----
+
+### 보스레이드 종료
+<img width="1136" alt="스크린샷 2022-08-29 오후 12 34 15" src="https://user-images.githubusercontent.com/55525574/187117877-111cca19-7800-4586-94b7-899d0935b3aa.png">
+
+-----
+### 보스레이드 어느정도 한뒤 회원 정보 조회
+<img width="1196" alt="스크린샷 2022-08-29 오후 12 57 55" src="https://user-images.githubusercontent.com/55525574/187120165-e68baae7-9b00-4860-8ce2-d05a835f34b4.png">
+
+
+
+
+
+
+
