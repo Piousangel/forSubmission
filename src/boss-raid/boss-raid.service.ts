@@ -6,6 +6,8 @@ import { HttpService } from '@nestjs/axios';
 import { Cache } from 'cache-manager'; 
 import { UserRankingService } from '../user-ranking/user-ranking.service';
 import { UsersService } from '../users/users.service';
+import { time } from 'console';
+import moment from 'moment';
 // import { v4 as uuidv } from 'uuid';
 
 @Injectable()
@@ -43,6 +45,9 @@ export class BossRaidService {
         await this.cacheManager.set('3', staticData.levels[2].score);
 
         //console.log("123123", await this.cacheManager.get('bossRaidLimitSeconds')); //180
+        // console.log(await this.cacheManager.get('1'));
+        // console.log(await this.cacheManager.get('2'));
+        // console.log(await this.cacheManager.get('3'));
 
     }
 
@@ -75,15 +80,28 @@ export class BossRaidService {
 
         if (getStatus == "POSSIBLE"){
             //여기서 점수를 올려버리자
-            const score = await this.cacheManager.get(level.toString());
-            console.log("level@@@@@@", level.toString());
-            console.log("score!!!!!!", score);
+            //const score = await this.cacheManager.get(level.toString());
+            // console.log(await this.cacheManager.get('2'));
+            // console.log("level@@@@@@", level.toString());
+            // console.log("score!!!!!!", score);
+            
+            let score = 0
+            if (level == 1) {
+                score = 20;
+            }
+            else if (level == 2) {
+                score = 47;
+            }
+            else if (level == 3) {
+                score = 85;
+            }
             const nowUser = await this.userService.getUserById(userId);
 
+            // 레이드 시작함과 동시에 Impossible로 바꿈
             const bossRaid = this.bossRaidRepository.create({
                 user : nowUser,
                 level : level,
-                score : Number(score),
+                score : score,
                 isEntered : RecordType.IMPOSSIBLE,
             })
 
@@ -112,8 +130,15 @@ export class BossRaidService {
         if (!record) {
             throw new NotFoundException('해당하는 레이드 기록이 존재하지 않습니다');
         }
-        record.isEntered = RecordType.POSSIBLE
+        
+        //레이드가 끝났다고 기록
+        record.isEntered = RecordType.FINSHED
+        record.endTime = new Date();
+        
+        //유저 아이디로 유저 엔티티 찾아서 전체 스코어 더해주면될것같은데 구현 못함.
+
         await this.bossRaidRepository.save(record);
+        
         await this.updateRanking( (await record.user).userId, record.score)
         return record.isEntered
     };
