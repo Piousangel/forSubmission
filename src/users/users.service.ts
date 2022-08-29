@@ -18,7 +18,8 @@ export class UsersService {
         //console.log("userId in create!!", userId)
         const user = this.userRepository.create({
             userId : userId,
-            totalScore: 0,
+            score: 0,
+            
             //isEntered : false
         })
         //console.log("data is stored1111");
@@ -33,6 +34,10 @@ export class UsersService {
         //log("userid123123",userId)
         const serach = await this.userRepository.findOne({
             where: {userId : userId},
+            relations:{
+                //score: true,
+                raidRecords : true,
+            }
         });
 
         if(!serach){

@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, Entity, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, ManyToOne, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import { User } from "../users/users.entity"; 
 
 import moment, { Moment } from "moment";
@@ -20,6 +20,9 @@ export class BossRaidEntity extends BaseEntity{
     user : User;
 
     //점수 -> 이것도 유저에서 가져오는 방식으로 하면 좋겠다..
+    
+    // @OneToOne(() => User, (user) => user.score)
+    // @JoinColumn()
     @Column()
     score : number;
 
