@@ -31,7 +31,8 @@
 
 -----
 ### 보스레이드 어느정도 한뒤 회원 정보 조회
-<img width="1196" alt="스크린샷 2022-08-29 오후 12 57 55" src="https://user-images.githubusercontent.com/55525574/187120165-e68baae7-9b00-4860-8ce2-d05a835f34b4.png">
+<img width="1194" alt="스크린샷 2022-08-29 오후 1 07 01" src="https://user-images.githubusercontent.com/55525574/187121069-b587550f-2c5d-4e9b-98b0-efcb16ac40e4.png">
+
 
 
 
