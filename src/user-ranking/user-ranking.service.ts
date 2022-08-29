@@ -10,7 +10,7 @@ export class UserRankingService {
     ){}
 
     public async updateRanking(userId: number, score: number) {
-        const result = await this.cacheManager.set(userId.toString(), score,
+        const result = await this.cacheManager.set(userId.toString(), score.toString(),
         {
             ttl:1200   // 20분뒤 사라짐!
         });

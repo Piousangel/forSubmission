@@ -42,20 +42,6 @@ export class BossRaidEntity extends BaseEntity{
     @Column({ type: 'timestamp', nullable: true})
     endTime: Date;
 
-    isBossRaidFinshed() {
-        return(
-            this.isEntered === RecordType.POSSIBLE|| this.isEntered === RecordType.IMPOSSIBLE
-        );
-    }
-
-    isTimeout(now: Moment) {
-        return now.isAfter(moment(this.endTime));
-    }
-
-    isFinshed(now: Moment) {
-        this.isEntered = RecordType.FINSHED;
-        this.endTime = now.toDate();
-    }
 
 }
 

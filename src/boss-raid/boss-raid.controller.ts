@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, CacheInterceptor, Controller, Get, Patch, Post, UseInterceptors } from '@nestjs/common';
 import { User } from 'src/users/users.entity';
 import { BossRaidEntity } from './boss-raid.entity';
 import { BossRaidService } from './boss-raid.service';
 import moment from 'moment';
 
 @Controller('boss-raid')
+@UseInterceptors(CacheInterceptor)
 export class BossRaidController {
 
     constructor(private bossraidService: BossRaidService){}
@@ -39,5 +40,13 @@ export class BossRaidController {
 
         return await this.bossraidService.searchBossRaidRanking(body.userId);
     }
+    
+    
+    // @Get()
+    // async getRanking() {
+    //     findAl(): string[] {
+    //         return [];
+    //       }
+    // }
 
 }
