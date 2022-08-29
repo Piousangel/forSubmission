@@ -33,6 +33,11 @@
 ### 보스레이드 어느정도 한뒤 회원 정보 조회
 <img width="1194" alt="스크린샷 2022-08-29 오후 1 07 01" src="https://user-images.githubusercontent.com/55525574/187121069-b587550f-2c5d-4e9b-98b0-efcb16ac40e4.png">
 
+-----
+### 레디스 접속 but CacheModule, 랭킹반영 실패,,,
+<img width="1133" alt="스크린샷 2022-08-29 오후 1 23 53" src="https://user-images.githubusercontent.com/55525574/187122681-97bb626c-9809-4e9e-92c7-8947273545d2.png">
+<img width="628" alt="스크린샷 2022-08-29 오후 1 28 00" src="https://user-images.githubusercontent.com/55525574/187123152-2b0820f0-33fe-4d58-8052-c4eae981b5ef.png">
+
 
 
 
