@@ -6,16 +6,21 @@ import { User } from './users/users.entity';
 import { BossRaidModule } from './boss-raid/boss-raid.module';
 import { BossRaidEntity } from './boss-raid/boss-raid.entity';
 import { UserRankingModule } from './user-ranking/user-ranking.module';
+import { ConfigModule } from '@nestjs/config'; 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: `${__dirname}/../env/.$process.env.NODE_ENV}.env`,
+    }),
+    TypeOrmModule.forRoot(
     {
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'test_user',
-      password: 'test_password',
-      database: 'testdb',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWD,
+      database: process.env.DB_NAME,
       synchronize: true, // local only
       entities: [User, BossRaidEntity],
       })

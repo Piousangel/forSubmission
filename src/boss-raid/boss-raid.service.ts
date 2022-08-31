@@ -50,10 +50,10 @@ export class BossRaidService {
             ttl:1200  
         });
 
-        //console.log("123123", await this.cacheManager.get('bossRaidLimitSeconds')); //180
-        // console.log(await this.cacheManager.get('1'));
-        // console.log(await this.cacheManager.get('2'));
-        // console.log(await this.cacheManager.get('3'));
+        console.log("123123", await this.cacheManager.get('bossRaidLimitSeconds')); //180
+        console.log(await this.cacheManager.get('1'));
+        console.log(await this.cacheManager.get('2'));
+        console.log(await this.cacheManager.get('3'));
 
     }
 
