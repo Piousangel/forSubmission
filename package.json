@@ -28,6 +28,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/serve-static": "^3.0.0",
+    "@nestjs/swagger": "^6.1.0",
     "@nestjs/typeorm": "^9.0.1",
     "@types/cache-manager-ioredis": "^2.0.2",
     "cache-manager": "^4.1.0",
@@ -36,12 +37,14 @@
     "class-validator": "^0.13.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.2",
+    "fastify-swagger": "^5.2.0",
     "moment": "^2.29.4",
     "pg": "^8.8.0",
     "redis": "^4.3.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "swagger-ui-express": "^4.5.0",
     "typeorm": "^0.3.8"
   },
   "devDependencies": {
